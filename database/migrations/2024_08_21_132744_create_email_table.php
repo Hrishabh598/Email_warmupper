@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string("password");
             $table->string('encryption')->default('tls');
             $table->integer('sent')->default(0);
-            $table->integer('next_in')->default(3);
+            $table->integer('next_in')->default(0);
             $table->integer('landed_in_spam')->default(0);
             $table->timestamps();
         });

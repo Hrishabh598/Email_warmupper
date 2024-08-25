@@ -24,6 +24,10 @@ class UserAuthController extends Controller
     }
     function send_otp(Request $req){
         $to = $req->input('email');
+        $user = User::where(['email'=>$to])->first();
+        if($user){
+            return redirect()->back()->with('error','Email already Exists !! Please Log In or Change password!!');
+        }
         $dataArray['email'] = $to;
         $dataArray['name'] = $req->input('name');
         $dataArray['password'] = Hash::make($req->input("password1"));

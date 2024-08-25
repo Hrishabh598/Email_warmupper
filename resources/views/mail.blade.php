@@ -6,21 +6,21 @@
     <title>One Time password code from HillSync Email Warmupper</title>
 </head>
 <body>
-    <pre>
-Dear ,{{ $name }}
+    <div>
+Dear ,{{ $name }}<br>
 
-We hope this message finds you well.
+We hope this message finds you well. <br>
 
-Your one-time authentication code is:<strong> {{ $otp }}</strong>
+Your one-time authentication code is:<strong> {{ $otp }}</strong> <br>
 
-Please use this code to complete your authentication process. This code is valid for the next 5 minutes. If you did not request this code, please reach us at same email.
+Please use this code to complete your authentication process. This code is valid for the next 5 minutes. If you did not request this code, please reach us at same email. <br>
 
-If you have any questions or need further assistance, feel free to reach out to our support team.
+If you have any questions or need further assistance, feel free to reach out to our support team. <br>
 
-Thank you for choosing HillSync!
+Thank you for choosing HillSync! <br>
 
-Best regards,
+Best regards, <br>
 The HillySync Team
-</pre>
+</div>
 </body>
 </html>

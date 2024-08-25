@@ -3,6 +3,7 @@ use App\Http\Middleware\UserAuthMiddleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\EmailConfigController;
+use App\Http\Controllers\ScheduleMailController;
 
 /* Authentication and Authorization routes*/
 Route::get('/',function(){
@@ -36,6 +37,7 @@ Route::post("/change_password",[UserAuthController::class,'change_password']);
 Route::get('/logout',[UserAuthController::class,'logout'])->name('logout');
 
 
+
 /*home(dashboard) management and configuration*/
 Route::get("/dashboard",[EmailConfigController::class,'dashboard'])->name('dashboard');
 
@@ -47,3 +49,6 @@ Route::get("/verify-add-Email-otp",function(){
     return view('add_email_otp');
 });
 Route::post("/verify-add-Email-otp",[EmailConfigController::class,'verify_otp']);
+
+/*main work scheduling emails and managing queue*/
+Route::get("/start_warmupping",[ScheduleMailController::class,'start_jobs']);

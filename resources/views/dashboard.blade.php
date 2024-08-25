@@ -32,6 +32,7 @@
                 </div>
             </div>
         </div>
+        <button class="button-17" role="button"><i class="fa fa-play"></i><pre> </pre><a class='nav-link' href="start_warmupping">Start</a></button>
         @if(session('success'))
         <p style="color: green;">{{ session('success') }}</p>
         @endif
@@ -65,5 +66,4 @@
         </div>
     </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 @endsection
