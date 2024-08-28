@@ -3,7 +3,7 @@
 namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Event;
-use Illuminate\Queue\Events\JobProcessed;
+use Illuminate\Queue\Events\JobProcessing;
 use App\Listeners\OperationsAfterProcessing;
 class EventServiceProvider extends ServiceProvider
 {
@@ -12,7 +12,7 @@ class EventServiceProvider extends ServiceProvider
      * Register services.
      */
     protected $listen = [
-        JobProcessed::class => [
+        JobProcessing::class => [
             OperationsAfterProcessing::class,
         ],
     ];

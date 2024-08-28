@@ -8,6 +8,7 @@ use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Config;
 
 class SendScheduledMail implements ShouldQueue
@@ -38,6 +39,7 @@ class SendScheduledMail implements ShouldQueue
     public function handle(): void
     {
         Config::set("mail.mailers.dynamic$this->id",$this->mailConfig);
+        Log::info("configured but i guess mailer issue");
         Mail::mailer("dynamic$this->id")->to($this->to)->send(new WarmupMail($this->sub,$this->msg,$this->name));
     }
 }

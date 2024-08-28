@@ -18,6 +18,12 @@ class UserAuthController extends Controller
         $user = User::where(['email'=>$req->input('email')])->first();
         if($user && Hash::check($req->input('password'),$user->password)){
             Session::put('user',$user);
+            if($user->is_running){
+                Session::put("running","yes");
+            }
+            else{
+                Session::put("stopped","yes");
+            }
             return redirect('/dashboard');
         }
         return redirect()->back()->with("error","Wrong emailID or Password.");

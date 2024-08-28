@@ -18,6 +18,9 @@ class UserAuthMiddleware
         if(($request->path()=='login' || $request->path()=='register') && $request->session()->has('user')){
             return redirect('/dashboard');
         }
+        else if($request->path()!='login' && $request->path()!='register' && !$request->session()->has('user')){
+            return redirect()->route('login.form')->with("error","Please Login first");
+        }
         return $next($request);
     }
 }

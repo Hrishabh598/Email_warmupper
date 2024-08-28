@@ -34,21 +34,22 @@ Route::get("/change_password",function(){
     return view('change_password');
 });
 Route::post("/change_password",[UserAuthController::class,'change_password']);
-Route::get('/logout',[UserAuthController::class,'logout'])->name('logout');
+Route::get('/logout',[UserAuthController::class,'logout'])->name('logout')->middleware(UserAuthMiddleware::class);
 
 
 
 /*home(dashboard) management and configuration*/
-Route::get("/dashboard",[EmailConfigController::class,'dashboard'])->name('dashboard');
+Route::get("/dashboard",[EmailConfigController::class,'dashboard'])->name('dashboard')->middleware(UserAuthMiddleware::class);
 
 Route::get("/add_email",function(){
     return view('addEmail');
-});
-Route::post("/add_email",[EmailConfigController::class,'add_email'])->name('email.otp');
+})->middleware(UserAuthMiddleware::class);
+Route::post("/add_email",[EmailConfigController::class,'add_email'])->name('email.otp')->middleware(UserAuthMiddleware::class);
 Route::get("/verify-add-Email-otp",function(){
     return view('add_email_otp');
-});
-Route::post("/verify-add-Email-otp",[EmailConfigController::class,'verify_otp']);
+})->middleware(UserAuthMiddleware::class);
+Route::post("/verify-add-Email-otp",[EmailConfigController::class,'verify_otp'])->middleware(UserAuthMiddleware::class);
 
 /*main work scheduling emails and managing queue*/
-Route::get("/start_warmupping",[ScheduleMailController::class,'start_jobs']);
+Route::get("/start_warmupping",[ScheduleMailController::class,'start_jobs'])->middleware(UserAuthMiddleware::class);
+Route::get("/stop_warmupping",[ScheduleMailController::class,'stop_jobs'])->middleware(UserAuthMiddleware::class);

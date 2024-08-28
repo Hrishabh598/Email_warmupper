@@ -32,9 +32,17 @@
                 </div>
             </div>
         </div>
-        <button class="button-17" role="button"><i class="fa fa-play"></i><pre> </pre><a class='nav-link' href="start_warmupping">Start</a></button>
+        @if(session('running'))
+            <a style="width:100px" class='nav-link' href="stop_warmupping"><button class="button-17" role="button"><i class="fa fa-stop"></i><pre> </pre>Stop</button></a>
+        @endif
+        @if(session('stopped'))
+            <a style="width:100px" class='nav-link' href="start_warmupping"><button class="button-17" role="button"><i class="fa fa-play"></i><pre> </pre>Start</button></a>
+        @endif
         @if(session('success'))
-        <p style="color: green;">{{ session('success') }}</p>
+            <p style="color: green;">{{ session('success') }}</p>
+        @endif
+        @if(session('error'))
+            <p style="color: red;">{{ session('error') }}</p>
         @endif
         <div class="card">
             <div class="card-header">
@@ -61,7 +69,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                <button class="btn btn-primary "><a class="nav-link" href="add_email"> + add email </a> </button>
+                <a style="width:130px" class="nav-link" href="add_email"><button class="button-17" role="button">+ Add Email</button></a>
             </div>
         </div>
     </div>
