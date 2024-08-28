@@ -8,7 +8,7 @@ use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
-use Config;
+use Illuminate\Support\Facades\Config;
 
 class SendScheduledMail implements ShouldQueue
 {
@@ -18,11 +18,13 @@ class SendScheduledMail implements ShouldQueue
     public $name;
     public $to;
     public $mailConfig;
+    public $id;
     /**
      * Create a new job instance.
      */
-    public function __construct($to,$sub,$msg,$name,$mailConfig)
+    public function __construct($id,$to,$sub,$msg,$name,$mailConfig)
     {
+        $this->id = $id;
         $this->sub = $sub;
         $this->msg = $msg;
         $this->name = $name;
@@ -35,7 +37,7 @@ class SendScheduledMail implements ShouldQueue
      */
     public function handle(): void
     {
-        Config::set('mail',$this->mailConfig);
-        Mail::to($this->to)->send(new WarmupMail($this->sub,$this->msg,$this->name));
+        Config::set("mail.mailers.dynamic$this->id",$this->mailConfig);
+        Mail::mailer("dynamic$this->id")->to($this->to)->send(new WarmupMail($this->sub,$this->msg,$this->name));
     }
 }

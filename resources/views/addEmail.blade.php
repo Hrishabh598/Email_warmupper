@@ -30,7 +30,7 @@
             </div>
             <div class="mb-3">
                 <label for="encryption">Encryption:</label>
-                <input type="text" class="form-control" id="encryption" name="encryption" value="TLS" required>
+                <input type="text" class="form-control" id="encryption" name="encryption" value="tls" required>
             </div>
             <div class="mb-3">
                 <label for="email">Email:</label>
