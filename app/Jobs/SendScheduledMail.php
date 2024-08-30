@@ -16,19 +16,17 @@ class SendScheduledMail implements ShouldQueue
     use Queueable;
     public $sub;
     public $msg;
-    public $name;
     public $to;
     public $mailConfig;
     public $id;
     /**
      * Create a new job instance.
      */
-    public function __construct($id,$to,$sub,$msg,$name,$mailConfig)
+    public function __construct($id,$to,$sub,$msg,$mailConfig)
     {
         $this->id = $id;
         $this->sub = $sub;
         $this->msg = $msg;
-        $this->name = $name;
         $this->to = $to;
         $this->mailConfig = $mailConfig;
     }
@@ -39,7 +37,6 @@ class SendScheduledMail implements ShouldQueue
     public function handle(): void
     {
         Config::set("mail.mailers.dynamic$this->id",$this->mailConfig);
-        Log::info("configured but i guess mailer issue");
-        Mail::mailer("dynamic$this->id")->to($this->to)->send(new WarmupMail($this->sub,$this->msg,$this->name));
+        Mail::mailer("dynamic$this->id")->to($this->to)->send(new WarmupMail($this->sub,$this->msg));
     }
 }

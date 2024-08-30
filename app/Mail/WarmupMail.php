@@ -14,26 +14,24 @@ class WarmupMail extends Mailable
     use Queueable, SerializesModels;
     public $sub;
     public $message;
-    public $name;
     /**
      * Create a new message instance.
      */
-    public function __construct($sub,$msg,$name)
+    public function __construct($sub,$msg)
     {
         $this->sub = $sub;
-        $this->message = $msg;
-        $this->name = $name;        
+        $this->message = $msg;  
     }
 
     /**
      * Get the message envelope.
      */
-    // public function envelope(): Envelope
-    // {
-    //     return new Envelope(
-    //         subject: 'Warmup Mail',
-    //     );
-    // }
+    public function envelope(): Envelope
+    {
+        return new Envelope(
+            subject: strip_tags($this->sub),
+        );
+    }
 
     // /**
     //  * Get the message content definition.
@@ -48,7 +46,6 @@ class WarmupMail extends Mailable
         return $this->view('WarmupMail')->with([
             'sub'=>$this->sub,
             'msg'=>$this->message,
-            'name'=>$this->name
         ]);
     }
     /**

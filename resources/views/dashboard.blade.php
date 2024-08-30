@@ -23,14 +23,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="card text-white bg-danger mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Spam Emails</h5>
-                        <p class="card-text">{{ $spamEmails }}</p>
-                    </div>
-                </div>
-            </div>
         </div>
         @if(session('running'))
             <a style="width:100px" class='nav-link' href="stop_warmupping"><button class="button-17" role="button"><i class="fa fa-stop"></i><pre> </pre>Stop</button></a>
@@ -55,7 +47,6 @@
                             <th>Email</th>
                             <th>Sent</th>
                             <th>Next in</th>
-                            <th>Landed in spam</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,7 +55,6 @@
                                 <td>{{ $email->email }}</td>
                                 <td>{{ $email->sent }}</td>
                                 <td>{{ $email->next_in }}</td>
-                                <td>{{ $email->landed_in_spam }}</td>
                             </tr>
                         @endforeach
                     </tbody>
