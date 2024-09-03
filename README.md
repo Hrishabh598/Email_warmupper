@@ -17,13 +17,19 @@ Email Warmupper is a Laravel-based application designed to automate the process 
    git clone https://github.com/Hrishabh598/Email_warmupper.git
    cd Email_warmupper
    ```
-2. **Install dependencies**:
-
+2. **Install dependencies**:\
+Do install other dependicies in which composer is included.
 ```bash
 composer install
 ```
-3. **start the application**
-Start the application:
+
+
+3. **Apply Migrations**
+```bash
+php artisan migrate
+```
+
+4. **start the application**
 
 ```bash
 php artisan serve
