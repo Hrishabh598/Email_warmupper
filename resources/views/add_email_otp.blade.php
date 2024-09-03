@@ -11,7 +11,7 @@
         <form action="verify-add-Email-otp" class="form-h p-4 border rounded shadow" method="POST">
             <div class="mb-3">
                 @csrf
-                <label for="otp" class="col-form-label">Enter the otp</label>
+                <label for="otp" class="col-form-label">Enter the otp send by your given credentials</label>
                 <input type="text" class="form-control" id="otp" name="otp" required>
             </div>
             <button class="btn btn-primary">Verify code</button>
