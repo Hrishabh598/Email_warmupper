@@ -77,7 +77,7 @@ class OperationsAfterProcessing
         $to = email::where('id',$jobRecord->receiver_email_id)->first();
         Log::info("Found to email $to->email");
         $job = (new SendScheduledMail($email->id,$to->email,$sub,$msg,$mailConfig))->delay(now()->addMinutes($next_in));
-        $jobId = Bus::dhrishabhtiwari598ispatch($job);
+        $jobId = Bus::dispatch($job);
         DB::table('jobs')->where('id',$jobId)->update(['sender_email_id'=>$email->id,'receiver_email_id'=>$to->id]);
         $next_in = min($next_in+3,120);
         DB::table('emails')->where('id',$email->id)->update(['next_in'=>$next_in,'sent'=>$sent+1]);

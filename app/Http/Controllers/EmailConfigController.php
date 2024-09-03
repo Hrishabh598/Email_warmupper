@@ -44,7 +44,7 @@ class EmailConfigController extends Controller
         $mailConfig=[
             'driver' => $req->mailer,
             'host' =>$req->host,
-            'port_no'=>$req->port_no,
+            'port'=>$req->port_no,
             'username'=>$req->email,
             'password'=>str_replace(' ', '', $req->password),
             'encryption'=>$req->encryption,

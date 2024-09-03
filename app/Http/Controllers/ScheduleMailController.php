@@ -2,22 +2,13 @@
 
 namespace App\Http\Controllers;
 use App\Jobs\SendScheduledMail;
-use App\Mail\WarmupMail;
-use Illuminate\Http\Request;
-use App\Models\User;
 use App\Models\email;
-use Config;
-use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Bus;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Artisan;
-use Symfony\Component\Process\Process;
-use Illuminate\Support\Facades\Http;
 use Gemini\Laravel\Facades\Gemini;
 class ScheduleMailController extends Controller
 {
